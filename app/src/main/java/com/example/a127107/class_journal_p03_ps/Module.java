@@ -1,6 +1,8 @@
 package com.example.a127107.class_journal_p03_ps;
 
-public class Module {
+import java.io.Serializable;
+
+public class Module implements Serializable{
     private String moduleCode;
     private String moduleName;
 

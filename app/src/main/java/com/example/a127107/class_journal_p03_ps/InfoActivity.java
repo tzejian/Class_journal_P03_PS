@@ -5,11 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class InfoActivity extends AppCompatActivity {
     Button btnEmail,btnAdd,btnInfo;
-    int requestCode = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,29 +56,5 @@ public class InfoActivity extends AppCompatActivity {
         });
 
 
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Only handle when 2nd activity closed normally
-        //  and data contains something
-        if(resultCode == RESULT_OK){
-            if (data != null) {
-                // Get data passed back from 2nd activity
-                String like = data.getStringExtra("add");
-
-                // If it is activity started by clicking
-                //  Superman, create corresponding String
-                if(requestCode == requestCode){
-
-                }
-
-
-
-            }
-        }
     }
 }
