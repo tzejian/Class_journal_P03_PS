@@ -1,6 +1,7 @@
 package com.example.a127107.class_journal_p03_ps;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,6 +17,8 @@ public class InfoActivity extends AppCompatActivity {
     ListView lv;
     ArrayAdapter aa;
     ArrayList<DailyCa> dailyca;
+    String moduleCode;
+    String moduleName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +33,14 @@ public class InfoActivity extends AppCompatActivity {
         // Get the String array named "info" we passed in
         String[] info = i.getStringArrayExtra("info");
         // Get the TextView object
-        String moduleCode = info[0].toString();
+        moduleCode = info[0].toString();
+        moduleName = info[1].toString();
         for(int a = 0;a<dailyca.size();a++) {
-            Integer week = a;
-            dailyca = new ArrayList<DailyCa>();
-            dailyca.add(new DailyCa("C",moduleCode,week));
+            if(dailyca != null) {
+                Integer week = a;
+                dailyca = new ArrayList<DailyCa>();
+                dailyca.add(new DailyCa("C", moduleCode, week));
+            }
         }
 
 
@@ -79,6 +85,10 @@ public class InfoActivity extends AppCompatActivity {
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent rpIntent = new Intent(Intent.ACTION_VIEW);
+                // Set the URL to be used.
+                rpIntent.setData(Uri.parse("http://www.rp.edu.sg/Module_Synopses/" + moduleCode + "_" + "moduleName" + ".aspx"));
+                startActivity(rpIntent);
 
             }
         });

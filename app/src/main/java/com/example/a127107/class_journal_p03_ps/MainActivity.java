@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         lv = (ListView) this.findViewById(R.id.lvModule);
 
         module = new ArrayList<Module>();
-        module.add(new Module("C302","Web Services"));
+        module.add(new Module("C302","Web_Services"));
 
         aa = new ModuleAdapter(this, R.layout.modulerow, module);
         lv.setAdapter(aa);
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent i = new Intent(MainActivity.this,InfoActivity.class);
                 i.putExtra("info",info);
+
                 startActivity(i);
 
             }
