@@ -5,16 +5,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class InfoActivity extends AppCompatActivity {
-    Button btnEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        btnEmail = (Button) findViewById(R.id.buttonEmail);
+        ListView lvGrades = (ListView) findViewById(R.id.lvGrades);
+
+        Button btnEmail = (Button) findViewById(R.id.buttonEmail);
         btnEmail.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View arg0) {
