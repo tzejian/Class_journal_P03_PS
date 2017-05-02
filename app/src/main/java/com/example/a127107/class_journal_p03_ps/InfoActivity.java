@@ -43,6 +43,7 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
             }
         });
 
