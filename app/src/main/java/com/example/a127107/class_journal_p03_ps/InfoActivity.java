@@ -4,11 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class InfoActivity extends AppCompatActivity {
     Button btnEmail,btnAdd,btnInfo;
-
+    ListView lv;
+    ArrayAdapter aa;
+    ArrayList<DailyCa> dailyca;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +24,27 @@ public class InfoActivity extends AppCompatActivity {
         btnEmail = (Button) findViewById(R.id.buttonEmail);
         btnAdd = (Button) findViewById(R.id.buttonAdd);
         btnInfo = (Button) findViewById(R.id.buttonInfo);
+
+        lv = (ListView) this.findViewById(R.id.lvGrades);
+        Intent i = getIntent();
+        // Get the String array named "info" we passed in
+        String[] info = i.getStringArrayExtra("info");
+        // Get the TextView object
+        String moduleCode = info[0].toString();
+        for(int a = 0;a<dailyca.size();a++) {
+            Integer week = a;
+            dailyca = new ArrayList<DailyCa>();
+            dailyca.add(new DailyCa("C",moduleCode,week));
+        }
+
+
+        aa = new InfoAdapter(this, R.layout.dailyrow, dailyca);
+        lv.setAdapter(aa);
+
+                Intent addIntent = new Intent(InfoActivity.this,addDailyGrade.class);
+                i.putExtra("info",info);
+                startActivity(addIntent);
+
         btnEmail.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View arg0) {
