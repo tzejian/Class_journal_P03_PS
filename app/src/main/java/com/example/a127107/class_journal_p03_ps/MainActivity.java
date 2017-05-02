@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lv;
     ArrayAdapter aa;
-    ArrayList<ModuleCode> modulecode;
+    ArrayList<Module> module;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
         lv = (ListView) this.findViewById(R.id.lvModule);
 
         // Create a few food objects in Food array
-        modulecode = new ArrayList<ModuleCode>();
-        modulecode.add(new ModuleCode("C302","Web Services"));
+        module = new ArrayList<Module>();
+        module.add(new Module("C302","Web Services"));
 
         // Link this Activity object, the row.xml layout for
         //  each row and the food String array together
-        aa = new ModuleAdapter(this, R.layout.modulerow, modulecode);
+        aa = new ModuleAdapter(this, R.layout.modulerow, module);
         lv.setAdapter(aa);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -41,4 +41,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     }
-}
