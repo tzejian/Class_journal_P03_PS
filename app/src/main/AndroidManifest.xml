@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".addDailyGrade"></activity>
-        <activity android:name=".InfoActivity"></activity>
     </application>
 
 </manifest>
