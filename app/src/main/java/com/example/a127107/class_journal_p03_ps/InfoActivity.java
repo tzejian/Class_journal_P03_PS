@@ -34,13 +34,14 @@ public class InfoActivity extends AppCompatActivity {
         // Get the String array named "info" we passed in
         String[] info = i.getStringArrayExtra("info");
         // Get the TextView object
+        dailyca = new ArrayList<DailyCa>();
         for (int a = 0; a < dailyca.size(); a++) {
             moduleCode = info[0].toString();
             moduleName = info[1].toString();
             String DailyGrade = dailyca.get(a).getDgGrade();
             Integer Week = dailyca.get(a).getWeek();
 
-            dailyca = new ArrayList<DailyCa>();
+
             dailyca.add(new DailyCa(DailyGrade, moduleCode, Week));
 
 
