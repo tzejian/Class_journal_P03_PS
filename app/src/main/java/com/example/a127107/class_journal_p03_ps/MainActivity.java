@@ -22,20 +22,22 @@ public class MainActivity extends AppCompatActivity {
 
         lv = (ListView) this.findViewById(R.id.lvModule);
 
-        // Create a few food objects in Food array
         module = new ArrayList<Module>();
         module.add(new Module("C302","Web Services"));
 
-        // Link this Activity object, the row.xml layout for
-        //  each row and the food String array together
         aa = new ModuleAdapter(this, R.layout.modulerow, module);
         lv.setAdapter(aa);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this,InfoActivity.class);
-                startActivity(intent);
+                String moduleCode = module.get(position).getModuleCode();
+                String moduleName = module.get(position).getModuleName();
+                String[] info = {moduleCode,moduleName};
+
+                Intent i = new Intent(MainActivity.this,InfoActivity.class);
+                i.putExtra("info",info);
+                startActivity(i);
 
             }
         });

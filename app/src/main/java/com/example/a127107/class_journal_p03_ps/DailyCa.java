@@ -2,10 +2,6 @@ package com.example.a127107.class_journal_p03_ps;
 
 import java.io.Serializable;
 
-/**
- * Created by 127107 on 2/5/2017.
- */
-
 public class DailyCa implements Serializable {
     private String dgGrade;
     private String moduleCode;
