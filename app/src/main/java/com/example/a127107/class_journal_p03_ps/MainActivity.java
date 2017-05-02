@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lv;
     ArrayAdapter aa;
-    ArrayList<Module> module;
+    ArrayList <DailyCa> module;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
