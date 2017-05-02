@@ -1,6 +1,7 @@
 package com.example.a127107.class_journal_p03_ps;
 
 import android.content.Intent;
+import android.icu.text.IDNA;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,8 @@ public class InfoActivity extends AppCompatActivity {
     ArrayList<DailyCa> dailyca;
     String moduleCode;
     String moduleName;
+    int requestCode = 1;
+    int size;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +81,10 @@ public class InfoActivity extends AppCompatActivity {
             btnAdd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    size = dailyca.size() + 1;
+                    Intent weeks = new Intent(InfoActivity.this, addDailyGrade.class);
+                    weeks.putExtra("week", dailyca.size() + 1 + "");
+                    startActivityForResult(weeks, requestCode);
 
 
                 }
@@ -96,4 +103,23 @@ public class InfoActivity extends AppCompatActivity {
             });
         }
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            if (data != null) {
+                String like = data.getStringExtra("grade");
+
+                if (requestCode == requestCode) {
+                    dailyca.add(new DailyCa(like,"C349" ,size));
+                    aa.notifyDataSetChanged();
+                }
+
+            }
+        }
+    }
+
 }

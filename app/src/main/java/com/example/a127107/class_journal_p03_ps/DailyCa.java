@@ -13,7 +13,8 @@ public class DailyCa implements Serializable {
         this.week = week;
     }
 
-        public String getDgGrade(){
+
+    public String getDgGrade(){
             return dgGrade;}
         public String getModuleCode() {
         return moduleCode;}

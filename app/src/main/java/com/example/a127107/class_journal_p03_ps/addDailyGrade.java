@@ -32,6 +32,10 @@ public class addDailyGrade extends AppCompatActivity {
         iv = (ImageView)findViewById(R.id.imageView);
         iv.setImageResource(R.drawable.dg);
 
+        Intent intentReceived = getIntent();
+        String weeks = intentReceived.getStringExtra("week");
+        tvWeek.setText("Week: " + weeks);
+
 
         rg = (RadioGroup) findViewById(R.id.rg);
         int selectedButtonId = rg.getCheckedRadioButtonId();
@@ -43,6 +47,13 @@ public class addDailyGrade extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("grade", rb.getText().toString());
+
+                setResult(RESULT_OK, i);
+
+                finish();
+
 
 
 
