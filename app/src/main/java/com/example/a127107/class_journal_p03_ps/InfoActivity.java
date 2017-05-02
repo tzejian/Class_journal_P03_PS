@@ -1,14 +1,24 @@
 package com.example.a127107.class_journal_p03_ps;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class InfoActivity extends AppCompatActivity {
     Button btnEmail,btnAdd,btnInfo;
-
+    ListView lv;
+    ArrayAdapter aa;
+    ArrayList<DailyCa> dailyca;
+    String moduleCode;
+    String moduleName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +27,30 @@ public class InfoActivity extends AppCompatActivity {
         btnEmail = (Button) findViewById(R.id.buttonEmail);
         btnAdd = (Button) findViewById(R.id.buttonAdd);
         btnInfo = (Button) findViewById(R.id.buttonInfo);
+
+        lv = (ListView) this.findViewById(R.id.lvGrades);
+        Intent i = getIntent();
+        // Get the String array named "info" we passed in
+        String[] info = i.getStringArrayExtra("info");
+        // Get the TextView object
+        moduleCode = info[0].toString();
+        moduleName = info[1].toString();
+        for(int a = 0;a<dailyca.size();a++) {
+            if(dailyca != null) {
+                Integer week = a;
+                dailyca = new ArrayList<DailyCa>();
+                dailyca.add(new DailyCa("C", moduleCode, week));
+            }
+        }
+
+
+        aa = new InfoAdapter(this, R.layout.dailyrow, dailyca);
+        lv.setAdapter(aa);
+
+                Intent addIntent = new Intent(InfoActivity.this,addDailyGrade.class);
+                i.putExtra("info",info);
+                startActivity(addIntent);
+
         btnEmail.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View arg0) {
@@ -51,6 +85,10 @@ public class InfoActivity extends AppCompatActivity {
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent rpIntent = new Intent(Intent.ACTION_VIEW);
+                // Set the URL to be used.
+                rpIntent.setData(Uri.parse("http://www.rp.edu.sg/Module_Synopses/" + moduleCode + "_" + "moduleName" + ".aspx"));
+                startActivity(rpIntent);
 
             }
         });
