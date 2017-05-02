@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class InfoActivity extends AppCompatActivity {
-    Button btnEmail;
+    Button btnEmail,btnAdd,btnInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +15,8 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
 
         btnEmail = (Button) findViewById(R.id.buttonEmail);
+        btnAdd = (Button) findViewById(R.id.buttonAdd);
+        btnInfo = (Button) findViewById(R.id.buttonInfo);
         btnEmail.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View arg0) {
@@ -36,6 +38,21 @@ public class InfoActivity extends AppCompatActivity {
                         "Choose an Email client :"));
 
             }});
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
     }
